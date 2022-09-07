@@ -35,7 +35,7 @@ module.exports = {
     },
     
     updateOne: function(req,res){
-        Sender.findOneAndUpdate(({"_id":req.body.id},{"name":req.body.name}),function(err,sender){
+        Sender.findOneAndUpdate({"_id":req.body.id},{"name":req.body.name},function(err,sender){
             if(err) return res.status(400).json(err);
             if(!sender) return res.status(404).json();
             res.json(sender);
