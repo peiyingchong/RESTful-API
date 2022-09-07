@@ -10,7 +10,7 @@ app.listen(8080)
 app.use(express.json())
 app.use(express.urlencoded({extended:false}));
 
-mongoose.connect('mongodb://localhost:27017/Week7', function (err) {
+mongoose.connect('mongodb://34.123.87.26:27017/Week7', function (err) {
     if (err) {
         return console.log('Mongoose - connection error:', err);
     }
