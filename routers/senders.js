@@ -7,7 +7,7 @@ module.exports = {
 
     getAll: function(req,res){
         let name = req.params.senderName
-        Sender.find({'name':name}).populate('parcels',('_id','weight','address','cost','fragile','sender')).exec(function(err,sender){
+        Sender.find({'name':name}).populate('parcels').exec(function(err,sender){
             if(err) return res.status(400).json(err);
             if(!sender) return res.status(404).json();
             res.json(sender)
@@ -50,17 +50,16 @@ module.exports = {
         let newParcel = new Parcel(aParcel);
             newParcel.save(function(err){
 
-        //retrieve sender document with corresponding id
         Sender.findOne({_id:senderId},function(err,sender){
             if(err) return res.status(400).json(err)
             if(!sender) return res.status(404).json();
-                //retrieve parcel by sender's id
 
                 sender.parcels.push(newParcel)
                     sender.save(function(err){
                         if(err) return res.status(500).json(err)
+                        res.json(sender);  
                     });
-                    res.json(sender);   })
+                 })
             })
     }
 

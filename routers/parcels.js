@@ -4,8 +4,7 @@ let Sender = require('../models/sender')
 let Parcel = require('../models/parcel')
 
 module.exports= {
-
-    //http://localhost:8080/?name=Tim&age=23&address=Mel query string 
+    
     getAll: function(req,res){
         let qAddress = req.query.address;
         Parcel.find({address:qAddress}).populate('sender',('_id','name')).exec(function(err,parcel){
