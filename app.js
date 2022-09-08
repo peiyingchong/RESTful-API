@@ -30,7 +30,6 @@ app.put('/parcel',parcel.updateOne);
 app.put('/parcel/:incId',parcel.incrementCost);
 app.put('/parcel/:decId',parcel.decrementCost);
 app.delete('/parcel/:weight',parcel.deleteWeight);
-app.delete('/parcel/:weight',parcel.deleteWeight);
 app.delete('/parcel/:cost',parcel.deleteCost);
 app.delete('/parcel/:id',parcel.deleteOne);
 
