@@ -25,17 +25,18 @@ module.exports= {
         })
     },
     deleteWeight: function(req,res){
-        Parcel.findOneAndRemove({"weight": parsetoInt(req.params.weight)},function(err){
+        Parcel.findOneAndRemove({"weight": parseInt(req.params.weight)},function(err){
             if(err) return res.status(400).json(err);
             res.json()
         })
     },
     deleteCost: function(req,res){
-        Parcel.findOneAndRemove({"cost": parsetoInt(req.params.cost)},function(err){
+        Parcel.findOneAndRemove({"cost": parseInt(req.params.cost)},function(err){
             if(err) return res.status(400).json(err);
             res.json()
         })
     },
+    
     deleteOne: function(req,res){
         Parcel.findOneAndRemove({"_id": req.params.id},function(err){
             if(err) return res.status(400).json(err);
