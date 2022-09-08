@@ -7,7 +7,7 @@ module.exports = {
 
     getAll: function(req,res){
         let name = req.params.senderName
-        Sender.find({'name':name}).populate('parcels').exec(function(err,sender){
+        Sender.find({'name':name}).populate('parcels',('_id','weight','address','cost','fragile','sender')).exec(function(err,sender){
             if(err) return res.status(400).json(err);
             if(!sender) return res.status(404).json();
             res.json(sender)
