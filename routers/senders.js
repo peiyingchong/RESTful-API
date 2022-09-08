@@ -59,9 +59,8 @@ module.exports = {
                 sender.parcels.push(newParcel)
                     sender.save(function(err){
                         if(err) return res.status(500).json(err)
-                        res.json(sender);
                     });
-                })
+                    res.json(sender);   })
             })
     }
 
