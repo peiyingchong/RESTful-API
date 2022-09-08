@@ -24,26 +24,26 @@ module.exports= {
             res.json(parcel);
         })
     },
-    deleteWeight: function(req,res){
-        Parcel.findOneAndRemove({"weight": parseInt(req.params.weight)},function(err){
+    delete: function(req,res){
+        if(req.body.weight!=null){
+        Parcel.findOneAndRemove({"weight": req.body.weight},function(err){
+            if(err) return res.status(400).json(err);
+            res.json()
+        })}
+        else if(req.body.cost!=null)
+        Parcel.findOneAndRemove({"cost": req.params.cost},function(err){
             if(err) return res.status(400).json(err);
             res.json()
         })
-    },
-    deleteCost: function(req,res){
-        Parcel.findOneAndRemove({"cost": parseInt(req.params.cost)},function(err){
-            if(err) return res.status(400).json(err);
-            res.json()
-        })
-    },
-    
-    deleteOne: function(req,res){
+        else{
         Parcel.findOneAndRemove({"_id": req.params.id},function(err){
             if(err) return res.status(400).json(err);
             res.json()
         })
-        
+    }
     },
+    
+    
     incrementCost: function(req,res){
         let id = req.body.incId;
         Parcel.findOneAndUpdate({_id:id},{cost:cost+10},function(err,parcel){
