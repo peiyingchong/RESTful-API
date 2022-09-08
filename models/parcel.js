@@ -5,21 +5,21 @@ let parcelSchema = new mongoose.Schema({
     weight : {type:Number, 
         validate: {
         validator: function (aWeight) {
-            return aWeight>0;
+            return (aWeight>0);
         },
         message: 'Weight should be positive '
     }},
     address: {type:String, validate:{
         validator:
         function(add){
-            return add.length>=3
+            return (add.length>=3)
         },
         message: 'Address should be more than 3 character'
     }},
     cost:{type:Number, 
         validate: {
         validator: function (aCost) {
-            return aCost>0;
+            return (aCost>0);
         },
         message: 'Cost should be more than 0 '
     }},
