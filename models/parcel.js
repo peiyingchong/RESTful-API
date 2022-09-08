@@ -16,6 +16,13 @@ let parcelSchema = new mongoose.Schema({
         },
         message: 'Address should be more than 3 character'
     }},
+    cost:{type:Number, 
+        validate: {
+        validator: function (aCost) {
+            return aCost>0;
+        },
+        message: 'Cost should be more than 0 '
+    }},
     fragile: Boolean,
     sender: {type: mongoose.Schema.ObjectId, ref:'Sender'}
 })
